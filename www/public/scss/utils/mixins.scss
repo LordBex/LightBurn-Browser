@@ -1,0 +1,5 @@
+
+@mixin transform_scale($factor){
+  transform: scale($factor);
+  -webkit-transform: scale($factor);
+}

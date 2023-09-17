@@ -7,6 +7,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="apple-touch-icon" sizes="180x180" href="{$WWW_TOP}/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{$WWW_TOP}/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{$WWW_TOP}/favicon/favicon-16x16.png">
+	<link rel="manifest" href="{$WWW_TOP}/favicon/site.webmanifest">
+
 	<title>{$page_title}</title>
 
 	<link href="{$WWW_TOP}/public/styles/theme.css" rel="stylesheet">
@@ -20,18 +25,18 @@
 	</script>
 </head>
 
-<body data-bs-theme="dark" style="background-color: #27374D">
+<body data-bs-theme="dark">
+
 <main>
 	<div class="container-lg h-100 p-0">
-
 		<div id="content">
 			{$content}
 		</div>
-
 	</div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="{$WWW_TOP}/public/js/main.js"></script>
 
 </body>
 </html>

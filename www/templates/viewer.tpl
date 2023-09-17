@@ -1,5 +1,5 @@
 
-{include 'subBreadcumb.tpl' breadcump=$path_tree}
+{include 'subBreadcrumb.tpl' breadcump=$path_tree}
 
 <div class="card position-relative">
     <div class="card-body d-flex flex-column flex-sm-row">
