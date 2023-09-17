@@ -1,0 +1,8 @@
+# ---> Composer
+composer.phar
+/vendor/
+
+/browser/
+/www/config.php
+/www/lib/smarty/templates_c/
+/www/users.db
