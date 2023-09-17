@@ -1,0 +1,24 @@
+svg-icon {
+  --icon-width: 1em;
+  --icon-height: 1em;
+  display: contents;
+
+  svg {
+    display: inline-block;
+    width: var(--icon-width);
+    height: var(--icon-height);
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+    &.no-background{
+      --background-color: transparent;
+    }
+
+    &.icon-brand {
+      --icon-width: 1.2em;
+      --icon-height: 1.2em;
+    }
+  }
+}
+

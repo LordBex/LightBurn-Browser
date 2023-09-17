@@ -1,0 +1,15 @@
+
+.image-container {
+    padding-bottom: 1rem;
+}
+
+@media screen and (min-width: map_get($grid-breakpoints, sm)) {
+    .image-container {
+        margin-right: 1rem;
+        padding-right: 1rem;
+        border-right: 1px solid var(--bs-secondary-border-subtle) !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+

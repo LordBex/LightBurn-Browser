@@ -1,0 +1,63 @@
+
+
+<div style="height: 60px" id="dropzone">XML-Datei hier ablegen</div>
+<div id="output"></div>
+
+<script>
+    const dropzone = document.getElementById('dropzone');
+    const output = document.getElementById('output');
+
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.style.backgroundColor = '#e0e0e0';
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.style.backgroundColor = '';
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.style.backgroundColor = '';
+
+        const file = e.dataTransfer.files[0];
+        console.log(file);
+        if (file && (file.type === "text/xml" || file.name.endsWith('.lbrn2') || file.name.endsWith('.lbrn')) ) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(event.target.result, "text/xml");
+
+                const fonts = Array.from(xmlDoc.querySelectorAll('Shape[Font]')).map(shape => shape.getAttribute('Font'));
+                const uniqueFonts = [...new Set(fonts)];
+
+                const data = {
+                    AppVersion: xmlDoc.documentElement.getAttribute('AppVersion'),
+                    FormatVersion: xmlDoc.documentElement.getAttribute('FormatVersion'),
+                    MaterialHeight: xmlDoc.documentElement.getAttribute('MaterialHeight'),
+                    MirrorX: xmlDoc.documentElement.getAttribute('MirrorX'),
+                    MirrorY: xmlDoc.documentElement.getAttribute('MirrorY'),
+                    Thumbnail: xmlDoc.querySelector('Thumbnail').getAttribute('Source')
+                };
+
+                output.innerHTML = `
+                        <h2>XML Daten</h2>
+                        <p><strong>AppVersion:</strong> ${data.AppVersion}</p>
+                        <p><strong>FormatVersion:</strong> ${data.FormatVersion}</p>
+                        <p><strong>MaterialHeight:</strong> ${data.MaterialHeight}</p>
+                        <p><strong>MirrorX:</strong> ${data.MirrorX}</p>
+                        <p><strong>MirrorY:</strong> ${data.MirrorY}</p>
+                        <h2>Verwendete Schriftarten</h2>
+                        <ul>
+                            ${uniqueFonts.map(font => `<li>${font}</li>`).join('')}
+                        </ul>
+                        <h2>Thumbnail</h2>
+                        <img src="data:image/png;base64, ${data.Thumbnail}" alt="Thumbnail" />
+                    `;
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Bitte laden Sie eine gültige XML-Datei hoch.');
+        }
+    });
+</script>
