@@ -1,7 +1,9 @@
 
 import * as boostrapHelder from './helper/bootstrap.js'
 
-
+function confirm_action(message){
+    return confirm(message)
+}
 function splitExtension(filename){
     let splitted = filename.split('.');
     let extension = splitted.pop();
@@ -79,6 +81,9 @@ function renameFolder(element){
 function deleteFolder(element){
     element = element.parentElement
     const path = element.dataset.path
+    if (!confirm_action("Willst du diesen Ordner '"+ element.dataset.name +"' wirklich löschen ?")){
+        return
+    }
     let formData = new FormData();
     formData.append('action', 'delete-folder');
     formData.append('path', path);
@@ -86,9 +91,22 @@ function deleteFolder(element){
     fetchAction(formData)
 }
 
+function deleteFile(element){
+    element = element.parentElement
+    const path = element.dataset.path
+    if (!confirm_action("Willst du die Datei '"+ element.dataset.name +"' wirklich löschen ?")){
+        return
+    }
+    let formData = new FormData();
+    formData.append('action', 'delete-file');
+    formData.append('path', path);
+    fetchAction(formData)
+}
+
 const actions = {
     'action-create-folder': createFolder,
     'action-rename-file': renameFile,
+    'action-delete-file': deleteFile,
     'action-rename-folder': renameFolder,
     'action-delete-folder': deleteFolder
 }

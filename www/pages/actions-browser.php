@@ -36,6 +36,16 @@ switch ($action){
             exit('Success');
         }
         break;
+    case 'delete-file':
+        if (empty($_POST['path'])){
+            header('HTTP/1.1 400 Bad Request');
+            exit("Fehlende oder ungültige 'path' Parameter");
+        }
+        $path = urldecode($_POST['path']);
+        if ($fileBrowser->delete_file($path)) {
+            exit('Success');
+        }
+        break;
     case 'create-folder':
         if (empty($_POST['newFolderName'])) {
             header('HTTP/1.1 400 Bad Request');

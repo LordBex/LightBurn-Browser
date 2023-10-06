@@ -6,7 +6,8 @@ function cleanPath($path): string
     if ($path === null || $path === '') {
         return '';
     }
-    return preg_replace('/\/?\.{2,}\/?/', '', $path);
+    $path = preg_replace('/\/?\.{2,}\/?/i', '', $path);
+    return $path;
 }
 
 function splitPathIntoSubPaths($path): array

@@ -114,6 +114,36 @@ class FileBrowser{
         return true;
     }
 
+    public function delete_file($file_path) {
+        // Prüft, ob $file_path relative Pfadangaben enthält
+        if (str_contains($file_path, '../') || str_contains($file_path, './')) {
+            header('HTTP/1.1 403 Forbidden');
+            exit('Permission Denied');
+        }
+
+        $full_path = BROWSER_PATH . DIRECTORY_SEPARATOR . $file_path;
+
+        // Überprüft, ob die Datei existiert
+        if (!is_file($full_path)) {
+            header('HTTP/1.1 404 Not Found');
+            exit('Datei nicht gefunden');
+        }
+
+        // Überprüft, ob die Datei tatsächlich im BROWSER_PATH liegt
+        if (!str_starts_with(realpath($full_path), BROWSER_PATH)) {
+            header('HTTP/1.1 403 Forbidden');
+            exit('Nicht erlaubt, Dateien außerhalb des BROWSER_PATH zu löschen');
+        }
+
+        // Versucht, die Datei zu löschen
+        if (!unlink($full_path)) {
+            header('HTTP/1.1 500 Internal Server Error');
+            exit('Datei konnte nicht gelöscht werden');
+        }
+
+        return true;
+    }
+
     public function create_folder($folder_path, $new_folder_name) {
         // Prüft, ob $folder_path relative Pfadangaben enthält
         if (str_contains($folder_path, '../') || str_contains($folder_path, './')) {
@@ -122,7 +152,7 @@ class FileBrowser{
         }
 
         // Prüft, ob der neue Ordnername nur erlaubte Zeichen enthält
-        if (!preg_match('/^[a-z0-9_-]+$/i', $new_folder_name)) {
+        if (!preg_match('/^[\w0-9_-]+$/iu', $new_folder_name)) {
             header('HTTP/1.1 400 Bad Request');
             exit('Ungültiger Ordnername');
         }

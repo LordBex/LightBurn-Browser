@@ -8,7 +8,8 @@ if (!$user->isLogged()) {
 }
 
 $target_path = $_GET['path'] ?? '';
-if (!preg_match('/^[a-z0-9-_\/. ]*$/i', $target_path)) {
+$target_path = cleanPath($target_path);
+if (!preg_match('/^[\w0-9-_\/. ]*$/iu', $target_path)) {
     die("Invalid path!");
 }
 
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetDir = BROWSER_PATH . DIRECTORY_SEPARATOR . $target_path;
         $targetFile = $targetDir . DIRECTORY_SEPARATOR . basename($fileName);
 
-        if (!preg_match('/^[a-z0-9-_. ]*\.lbrn2?$/i', $fileName)) {
+        if (!preg_match('/^([\w0-9_\- \/]+\.?)*\.lbrn2?$/iu', $fileName)) {
             die("Invalid File Name!");
         }
 

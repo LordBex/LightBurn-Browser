@@ -24,6 +24,7 @@
             </a>
             <div class="d-flex flex-row align-items-center gap-2" data-path="{$item->relative_path|escape:"html"}" data-name="{$item->name}">
                 <button class="icon-btn action-rename-file"><i class="fa-solid fa-pen"></i></button>
+                <button class="icon-btn text-danger action-delete-file"><i class="fa-solid fa-trash-can"></i></button>
             </div>
         </div>
     </div>
