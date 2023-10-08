@@ -52,12 +52,12 @@ class BrowserController extends UserController
         exit();
     }
 
-    public function upload(string $target_path)
+    public function upload(string $path)
     {
         require_once (WWW_DIR.'lib/utils.php');
 
-        $target_path = cleanPath($target_path);
-        if (!preg_match('/^[\w0-9-_\/. ]*$/iu', $target_path)) {
+        $path = cleanPath(urldecode($path));
+        if (!preg_match('/^[\w0-9-_\/. ]*$/iu', $path)) {
             die("Invalid path!");
         }
 
@@ -67,7 +67,7 @@ class BrowserController extends UserController
                 $fileName = $file['name'];
                 $fileTmp = $file['tmp_name'];
 
-                $targetDir = BROWSER_PATH . DIRECTORY_SEPARATOR . $target_path;
+                $targetDir = BROWSER_PATH . DIRECTORY_SEPARATOR . $path;
                 $targetFile = $targetDir . DIRECTORY_SEPARATOR . basename($fileName);
 
                 if (!preg_match('/^([\w0-9_\- \/]+\.?)*\.lbrn2?$/iu', $fileName)) {
@@ -82,7 +82,7 @@ class BrowserController extends UserController
             }
         }
 
-        header('Location: '.WWW_TOP.'/browser/'.$target_path);
+        header('Location: '.WWW_TOP.'/browser/'.$path);
         exit();
     }
 }

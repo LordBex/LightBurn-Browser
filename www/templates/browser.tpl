@@ -8,7 +8,7 @@
 </script>
 
 <div class="container mb-3 p-0 m-0">
-    <form action="{$WWW_TOP}/upload{$path}" method="post" enctype="multipart/form-data">
+    <form action="{$WWW_TOP}/upload/{$path}" method="post" enctype="multipart/form-data">
         <div class="input-group input-group-sm">
             <input type="file" class="form-control" id="fileInput" name="file">
             <button type="submit" class="btn btn-outline-secondary">Upload</button>

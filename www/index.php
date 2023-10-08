@@ -14,7 +14,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/browser', 'BrowserController@index');
     $r->addRoute('GET', '/browser/{path:.*}', 'BrowserController@index');
     $r->addRoute('GET', '/download/{path:.*}', 'BrowserController@download');
-    $r->addRoute('GET', '/upload/{path:.*}', 'BrowserController@upload');
+    $r->addRoute('POST', '/upload/{path:.*}', 'BrowserController@upload');
     // Browser -> Actions
     $r->addRoute('POST', '/actions-browser', 'ActionBrowserController@handleRequest');
     // Viewer
