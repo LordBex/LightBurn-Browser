@@ -11,6 +11,8 @@
                         <th scope="row"><strong>{$k}</strong></th>
                         <td><a href="#todo">Change Password</a> # TODO</td>
                     </tr>
+                {elseif $k=='oidc_id'}
+
                 {else}
                     <tr>
                         <th scope="row"><strong>{$k}</strong></th>

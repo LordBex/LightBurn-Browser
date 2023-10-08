@@ -1,9 +1,5 @@
-RewriteEngine on
-
-# Do not process images or CSS files further
-RewriteRule \.(css|scss|map|svg|webp|jpe?g|gif|png|js|ico|mp3|ogg|ttf|woff|woff?2)$ - [L]
-
-# Rewrite web pages to one master page
-RewriteRule ^([^/\.]+)/?$ index.php?page=$1 [B=\ ;,QSA,L]
-# RewriteRule ^([^/\.]+)/([^/]+)/?$ index.php?page=$1&id=$2 [B=\ ;,QSA,L]
-# RewriteRule ^([^/\.]+)/([^/]+)/([^/]+)/? index.php?page=$1&id=$2&subpage=$3 [B=\ ;,QSA,L]
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]

@@ -6,7 +6,7 @@
             {if $v@last}
                 <li class="breadcrumb-item active" aria-current="page">{$k}</li>
             {else}
-                <li class="breadcrumb-item"><a href="{$WWW_TOP}/browser?path={$v|escape:'url'}">{$k}</a></li>
+                <li class="breadcrumb-item"><a href="{$WWW_TOP}/browser{$v}">{$k}</a></li>
             {/if}
         {/foreach}
     </ol>

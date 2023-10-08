@@ -5,12 +5,9 @@ try {
     $db = new PDO('sqlite:' . WWW_DIR  . '/users.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $sql = file_get_contents(WWW_DIR.'/sql/db-init.sql');
     // Erstellen der Benutzertabelle
-    $db->exec("CREATE TABLE IF NOT EXISTS users (
-               id INTEGER PRIMARY KEY AUTOINCREMENT,
-               username TEXT UNIQUE NOT NULL,
-               password TEXT NOT NULL,
-               role TEXT NOT NULL);");
+    $db->exec($sql);
 
 } catch(PDOException $e) {
     echo "Datenbankfehler: " . $e->getMessage();

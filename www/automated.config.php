@@ -23,3 +23,4 @@ define('MY_SMARTY_DIR', WWW_DIR.'lib/smarty/');
 // smarty template dir
 //
 define('TEMPLATE_DIR', WWW_DIR.'templates/');
+define('VIEWS_DIR', WWW_DIR.'views/');
