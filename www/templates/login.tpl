@@ -44,8 +44,19 @@
                         <button class="btn btn-primary w-100 py-2" type="submit" value="Login">Login</button>
                     </form>
 
-                    <p class="mt-4 mb-3 text-body-secondary text-center w-100">Noch kein Profil ? <a href="{$WWW_TOP}/register">SignUp</a></p>
+                    {if $CONFIGS["oidc_providers"]}
+                        <div class="d-flex flex-row align-items-center py-3 text-secondary opacity-50">
+                            <hr class="w-100"/>
+                            <span class="mx-2 fs-6">OR</span>
+                            <hr class="w-100"/>
+                        </div>
+                        {foreach from=$CONFIGS["oidc_providers"] key=k item=v}
+                            <a class="btn btn-sm btn-outline-secondary w-100" href="{WWW_TOP}/login-with/{$k}">Login mit {$v["name"]}</a>
+                        {/foreach}
+                    {/if}
 
+
+                    <p class="mt-4 mb-3 text-body-secondary text-center w-100">Noch kein Profil ? <a href="{$WWW_TOP}/register">SignUp</a></p>
                 </div>
             </div>
         </div>

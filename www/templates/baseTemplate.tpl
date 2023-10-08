@@ -36,7 +36,7 @@
 				</span>
 			</a>
 			<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{$WWW_TOP}">Home</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{$WWW_TOP}/">Home</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{$WWW_TOP}/browser">Browser</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{$WWW_TOP}/viewer">Viewer</a>
 				{if $isLogged}

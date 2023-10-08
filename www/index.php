@@ -24,7 +24,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/login', 'AuthController@login');
     $r->addRoute('POST', '/login', 'AuthController@login');  // POST-Handling für das Einreichen des Anmeldeformulars
     // OIDC-Anmeldung
-    $r->addRoute('GET', '/oidc-login', 'AuthController@oidcLogin');
+    $r->addRoute('GET', '/login-with/{key}', 'OpenIDController@login');
     // Abmeldung
     $r->addRoute('GET', '/logout', 'AuthController@logout');
     // Standardregistrierung

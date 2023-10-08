@@ -23,6 +23,8 @@ class GuestController
         $this->smarty->assign('page_title', 'LightBurn - Browser');
         $this->smarty->assign('error', '');
 
+        $this->smarty->assign('CONFIGS', CONFIGS);
+
         $this->smarty->assign('isLogged', $this->user->isLogged());
     }
 
