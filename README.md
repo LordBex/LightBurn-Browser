@@ -19,22 +19,24 @@ Mit diesem PHP-Projekt können Sie alle Dateien und Ordner in einem konfigurierb
 1. **Datei- und Ordneransicht**: Anzeige aller Dateien und Ordner im konfigurierten Subpfad.
 2. **Datei-Viewer**: Zeigt ein Thumbnail-Bild der Datei, verwendete Schriftarten und die Version von LightBurn, die bei der Erstellung verwendet wurde.
 3. **Datei-Interaktionen**: Unterstützt das Herunterladen und Hinzufügen von Dateien.
+4. **Umbenennen von Dateien und Ordnern**
+5. **Authentifizierung mittels OIDC** besser bekannt als openid. 
 
 ### Geplant (TODO)
 
-
-1. Umbenennen von Dateien und Ordnern.
-2. Löschen von Dateien und Ordnern.
-3. Verschieben von Datein
-4. Zwei-Faktor-Authentifizierung (2FA).
+1. Löschen von Dateien und Ordnern.
+2. Verschieben von Datein
+3. Zwei-Faktor-Authentifizierung (2FA).
 
 ---
 
 ## Technologien
 
 - [PHP 8.1](https://www.php.net)
-- [Smarty (über Composer installiert)](https://github.com/smarty-php/smarty)
-- [Bootstrap 5.3.1 ](https://getbootstrap.com/)
+- [Bootstrap 5.3.1](https://getbootstrap.com/)
+- [Smarty (mittels Composer installiert)](https://github.com/smarty-php/smarty)
+- [FastRoute (mittels Composer installiert)](https://github.com/nikic/FastRoute)
+- [OpenID-Connect-PHP (mittels Composer installiert)](https://github.com/jumbojett/OpenID-Connect-PHP.git)
 
 ---
 
@@ -68,6 +70,7 @@ define('BROWSER_PATH', '....');
 
 <img src="./docs/images/browser.png" alt="" title="Browser" style="display: inline-block; margin: 0 auto; max-width: 400px">
 <img src="./docs/images/viewer.png" alt="" title="Viewer" style="display: inline-block; margin: 0 auto; max-width: 400px">
+<img src="./docs/images/login.png" alt="" title="Login" style="display: inline-block; margin: 0 auto; max-width: 400px">
 
 ---
 

@@ -16,15 +16,18 @@ class UserClass {
 
     public function login($username, $password): bool
     {
-
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username");
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
+        if ($user && isset($user['password'])) {
+
+            if (!password_verify($password, $user['password'])){
+                return false;
+            }
+
             $_SESSION['currentUser'] = $username;
             $_SESSION['currentUserId'] = $user['id'];  // Speichern der user_id in der Session
             $this->currentUserId = $user['id'];
@@ -42,6 +45,7 @@ class UserClass {
 
     public function register($username, $password, $role = 'user'): bool
     {
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->db->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);

@@ -27,5 +27,5 @@
         </div>
     </div>
 
-    <a class="btn btn-sm btn-warning position-absolute" style="right: 1rem; bottom: 1rem" href="{$WWW_TOP}/download{$path}"> Download<i class="fa-solid fa-download ps-2"></i></a>
+    <a class="btn btn-sm btn-warning position-absolute" style="right: 1rem; bottom: 1rem" href="{$WWW_TOP}/download/{$path}"> Download<i class="fa-solid fa-download ps-2"></i></a>
 </div>

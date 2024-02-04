@@ -84,7 +84,7 @@ class ActionBrowserController {
             header('HTTP/1.1 400 Bad Request');
             exit("Fehlender oder ungültiger 'newFolderName' Parameter");
         }
-        if (empty($_POST['path'])) {
+        if (!isset($_POST['path'])) {
             header('HTTP/1.1 400 Bad Request');
             exit("Fehlender oder ungültiger 'path' Parameter");
         }
